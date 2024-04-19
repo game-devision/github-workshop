@@ -32,7 +32,7 @@ _NOTE_: if the `--global` param is provided, the same email and name are going t
 
 From a repository directory, add all files to include in the commit:
 
-[`git add [--all] [{file_path}]`](https://git-scm.com/docs/git-add): includes files to be included in the next commit. `--all` will add all edited files, but it's possible to specify a `{file_path}` to only include specific files. This command changes the file status.
+[`git add [--all] [{file_path}]`](https://git-scm.com/docs/git-add): includes files to be included in the next commit. `--all` will add all modified files, but it's possible to specify a `{file_path}` to only include specific files. This command changes the file status.
 
 [`git status`](https://git-scm.com/docs/git-status): displays the status of files that are present in the repository folder and differ from the their snapshot of the most recent commit.
 
@@ -42,8 +42,22 @@ From a repository directory, add all files to include in the commit:
 
 ## Branches
 
-[`git branch`](https://git-scm.com/docs/git-branch)
+Branches are separate versions of a project development timeline. They allow alternate versions of the files to co-exist in the same repository, branching from the same starting point. 
+
+The working directory can only have one active branch at a time. Every commit will be done in the currently active branch.
+
+When a repository is initialized, a single default `main` branch is created as active. 
+
+[`git branch`](https://git-scm.com/docs/git-branch): lists all branches of the current repository
+
+`git branch {branch_name}`: creates a new branch named `{branch_name}`.
+
+`git checkout {branch_name}`: changes the current branch to the provided `{branch_name}`. If there are modified files, git will try to carry these files to the checked out branch. Since this operation could generate conflicts, it's advised to make sure the current branch doesn't have any uncommitted file.
 
 ## Remotes
 
-[`git remote`](https://git-scm.com/docs/git-branch)
+[`git remote`](https://git-scm.com/docs/git-remote): lists all remote tracked repositories available on the current repository.
+
+[`git push [{remote_alias}] [{remote_branch}]`](https://git-scm.com/docs/git-push): sends all updates on the current repository to the remote repository `{remote_alias}` to the `{remote_branch}`.
+
+[`git pull [{remote_alias}] [{remote_branch}]`](https://git-scm.com/docs/git-pull): fetches all updates from the remote repository `{remote_alias}` of its `{remote_branch}` and applies to the currently active local branch.
